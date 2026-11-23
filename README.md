@@ -47,7 +47,7 @@ Requires Node.js 20.9 or newer.
 
 - Static HTML for every page (Google reads full content without running JavaScript)
 - Unique `<title>`, meta description, keywords and canonical URL per page
-- Open Graph and Twitter cards with an auto-generated 1200×630 share image (`/opengraph-image`)
+- Open Graph and Twitter cards with a 1200×630 share image (`public/og-image.png`)
 - `sitemap.xml`, `robots.txt` and web manifest generated automatically
 - schema.org JSON-LD: Organization, WebSite, Service, FAQPage, SoftwareApplication (each product), BreadcrumbList
 - Semantic headings (one `h1` per page), breadcrumbs, descriptive link text, `lang="en-IN"`
@@ -71,6 +71,19 @@ The contact form collects name, email, phone/WhatsApp, company, market, project 
 The API returns success if at least one channel delivered the lead.
 
 ## Deployment
+
+### GitHub Pages (live: https://tradingaisoftware.com)
+
+Every push to `main` runs `.github/workflows/deploy.yml`, which builds a static export (`STATIC_EXPORT=true`, output in `./out`) and publishes it to GitHub Pages on the custom domain in `public/CNAME`.
+
+- GitHub Pages serves static files only, so the workflow leaves out `src/app/api`. The contact form then sends enquiries through **Web3Forms**: create a free access key at https://web3forms.com with your inbox address, and add it as a repository variable named `WEB3FORMS_KEY` (Settings → Secrets and variables → Actions → Variables). Until that's set, the form opens the visitor's email app with the enquiry pre-filled.
+- Optional repository variables: `GA_ID` (Google Analytics 4), `GOOGLE_SITE_VERIFICATION` (Search Console), `FORM_ENDPOINT` (any other JSON form endpoint).
+- One-time setup: Settings → Pages → Source: **GitHub Actions**; Custom domain: `tradingaisoftware.com`; tick **Enforce HTTPS** once the certificate is issued.
+- DNS at GoDaddy: four `A` records for `@` → `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`, and a `CNAME` record for `www` → `pareshr13.github.io`.
+
+Local static build: `STATIC_EXPORT=true NEXT_PUBLIC_STATIC_SITE=true npm run build`, then serve `./out`.
+
+### Server hosting (keeps the built-in /api/contact route)
 
 **Vercel (simplest):** import the repo, add the `.env` values in Project Settings, deploy. Use email and/or webhook delivery, because the file system is read-only there.
 

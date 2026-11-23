@@ -446,7 +446,7 @@ export function ContactSection({ headingAs = 'h2' }: { headingAs?: 'h1' | 'h2' }
             <div className="contact-line"><Icon d="M4 6h16v12H4zM4 7l8 6 8-6" stroke="#9DB4FF" />{site.email.includes('@') ? <a href={`mailto:${site.email}`} style={{ color: '#fff' }}>{site.email}</a> : <span>{site.email}</span>}</div>
             <div className="contact-line"><Icon d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2" stroke="#9DB4FF" /><span>{site.phone}</span></div>
             {site.whatsapp && <div className="contact-line"><Icon d="M4 20l1.4-4A8 8 0 1 1 8 18.6z" stroke="#9DB4FF" /><a href={`https://wa.me/${site.whatsapp}`} style={{ color: '#fff' }} rel="noopener">Chat on WhatsApp</a></div>}
-            <div className="contact-line"><Icon d="M12 21s7-6.2 7-12a7 7 0 10-14 0c0 5.8 7 12 7 12zM12 11.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z" stroke="#9DB4FF" /><span>{site.city}, {site.country}</span></div>
+            <div className="contact-line"><Icon d="M12 21s7-6.2 7-12a7 7 0 10-14 0c0 5.8 7 12 7 12zM12 11.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z" stroke="#9DB4FF" /><span>{site.address}</span></div>
           </address>
         </div>
         <ContactForm />

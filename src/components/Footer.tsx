@@ -10,7 +10,9 @@ export default function Footer() {
           <div className="footer-col">
             <span className="hd" style={{ color: '#fff', fontSize: 20, fontWeight: 800 }}>{site.name}</span>
             <span>AI-first technology for stock, crypto and currency markets.</span>
-            <span>{site.city}, {site.country}</span>
+            <span>{site.address}</span>
+            <a href={`tel:${site.phone.replace(/\s/g, '')}`}>{site.phone}</a>
+            <a href={`mailto:${site.email}`}>{site.email}</a>
           </div>
           <div className="footer-col">
             <b>Products</b>

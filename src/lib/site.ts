@@ -5,15 +5,18 @@
 export const site = {
   name: 'Savita IT Solutions',
   shortName: 'Savita IT',
-  url: (process.env.NEXT_PUBLIC_SITE_URL || 'https://www.savitaitsolutions.com').replace(/\/$/, ''),
+  url: (process.env.NEXT_PUBLIC_SITE_URL || 'https://tradingaisoftware.com').replace(/\/$/, ''),
   tagline: 'Institutional-grade AI trading technology, engineered in India.',
   description:
     'Savita IT Solutions builds AI-powered trading terminals, signal engines, option-chain analytics, backtesting platforms and broker integrations for stock, crypto and currency markets.',
-  email: process.env.NEXT_PUBLIC_CONTACT_EMAIL || '[YOUR EMAIL]',
-  phone: process.env.NEXT_PUBLIC_CONTACT_PHONE || '[YOUR PHONE / WHATSAPP]',
-  whatsapp: process.env.NEXT_PUBLIC_WHATSAPP || '',
-  city: process.env.NEXT_PUBLIC_CITY || '[YOUR CITY]',
+  email: process.env.NEXT_PUBLIC_CONTACT_EMAIL || 'info@tradingaisoftware.com',
+  phone: process.env.NEXT_PUBLIC_CONTACT_PHONE || '+91 84607 71378',
+  whatsapp: process.env.NEXT_PUBLIC_WHATSAPP || '918460771378',
+  city: process.env.NEXT_PUBLIC_CITY || 'Gandhinagar',
   country: 'India',
+  address: 'C-404, Pancham Kimberly, New Chandkheda, Gandhinagar – 382421, Gujarat, India',
+  postalCode: '382421',
+  region: 'Gujarat',
   founder: 'Paresh',
   foundedYear: 2026,
   social: {
@@ -46,3 +49,8 @@ export const nav = [
   { href: '/integrations', label: 'Integrations' },
   { href: '/about', label: 'Company' }
 ];
+
+/** Absolute canonical URL for a path, with the trailing slash the site uses. */
+export const absUrl = (path = '') => `${site.url}${path ? path.replace(/\/?$/, '/') : '/'}`;
+
+export const ogImage = { url: '/og-image.png', width: 1200, height: 630, alt: `${site.name} — AI trading software for stocks, crypto and forex` };

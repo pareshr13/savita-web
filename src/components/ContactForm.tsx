@@ -9,6 +9,45 @@ declare global {
   interface Window { gtag?: (...args: unknown[]) => void }
 }
 
+// Where enquiries go:
+//  1. NEXT_PUBLIC_WEB3FORMS_KEY set → Web3Forms (free; emails each lead to you). Best for GitHub Pages.
+//  2. NEXT_PUBLIC_FORM_ENDPOINT set → POST JSON to any endpoint (Formspree, Google Apps Script, n8n, CRM...).
+//  3. Static build with neither → opens the visitor's email app with the enquiry pre-filled.
+//  4. Otherwise (server build) → this site's own /api/contact route.
+const WEB3FORMS_KEY = process.env.NEXT_PUBLIC_WEB3FORMS_KEY || '';
+const FORM_ENDPOINT = process.env.NEXT_PUBLIC_FORM_ENDPOINT || '';
+const IS_STATIC = process.env.NEXT_PUBLIC_STATIC_SITE === 'true';
+const CONTACT_EMAIL = process.env.NEXT_PUBLIC_CONTACT_EMAIL || 'info@tradingaisoftware.com';
+
+async function deliver(payload: Record<string, unknown>): Promise<'sent' | 'mailto'> {
+  if (WEB3FORMS_KEY) {
+    const res = await fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+      body: JSON.stringify({
+        access_key: WEB3FORMS_KEY,
+        subject: `New website enquiry: ${payload.type || 'General'} — ${payload.name}`,
+        from_name: 'tradingaisoftware.com',
+        replyto: payload.email,
+        botcheck: '',
+        ...payload
+      })
+    });
+    const data = await res.json().catch(() => ({}));
+    if (!res.ok || data.success === false) throw new Error(data.message || 'Something went wrong. Please try again.');
+    return 'sent';
+  }
+  if (FORM_ENDPOINT || !IS_STATIC) {
+    const res = await fetch(FORM_ENDPOINT || '/api/contact', { method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' }, body: JSON.stringify(payload) });
+    const data = await res.json().catch(() => ({}));
+    if (!res.ok) throw new Error(data.error || 'Something went wrong. Please try again.');
+    return 'sent';
+  }
+  const lines = ['name', 'email', 'phone', 'company', 'market', 'type', 'budget', 'message'].map((k) => `${k[0].toUpperCase() + k.slice(1)}: ${payload[k] ?? ''}`);
+  window.location.href = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(`Website enquiry: ${payload.type || 'General'}`)}&body=${encodeURIComponent(lines.join('\n'))}`;
+  return 'mailto';
+}
+
 const PROJECT_TYPES = ['AI signal engine', 'Trading portal / terminal', 'Broker integration / algo trading', 'Option-chain analytics', 'Backtesting platform', 'White-label platform', 'Product demo', 'Other'];
 
 export default function ContactForm({ defaultType }: { defaultType?: string }) {
@@ -19,6 +58,7 @@ export default function ContactForm({ defaultType }: { defaultType?: string }) {
   const startedAt = useRef<number>(0);
   const [meta, setMeta] = useState<Record<string, string>>({});
   const [type, setType] = useState(PROJECT_TYPES[0]);
+  const [viaMail, setViaMail] = useState(false);
 
   useEffect(() => {
     startedAt.current = Date.now();
@@ -52,13 +92,15 @@ export default function ContactForm({ defaultType }: { defaultType?: string }) {
       return;
     }
     setStatus('sending');
-    const payload = { ...Object.fromEntries(f.entries()), consent: true, elapsedMs: Date.now() - startedAt.current, ...meta };
+    const payload: Record<string, unknown> = { ...Object.fromEntries(f.entries()), consent: true, elapsedMs: Date.now() - startedAt.current, ...meta };
     try {
-      const res = await fetch('/api/contact', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
-      const data = await res.json().catch(() => ({}));
-      if (!res.ok) throw new Error(data.error || 'Something went wrong. Please try again.');
+      // Bots: hidden honeypot filled, or submitted unrealistically fast. Pretend success, send nothing.
+      if (payload.website || (Number(payload.elapsedMs) > 0 && Number(payload.elapsedMs) < 2500)) { setStatus('sent'); return; }
+      const { website: _hp, elapsedMs: _e, ...clean } = payload;
+      const how = await deliver(clean);
+      setViaMail(how === 'mailto');
       setStatus('sent');
-      window.gtag?.('event', 'generate_lead', { form: 'contact', project_type: String(f.get('type') || '') });
+      window.gtag?.('event', 'generate_lead', { form: 'contact', project_type: String(f.get('type') || ''), method: how });
       form.reset();
     } catch (err) {
       setStatus('error');
@@ -71,7 +113,7 @@ export default function ContactForm({ defaultType }: { defaultType?: string }) {
       <div className="form-card" role="status" aria-live="polite">
         <div style={{ display: 'flex', flexDirection: 'column', gap: 12, padding: '24px 0' }}>
           <div className="hd" style={{ fontSize: 26, fontWeight: 800 }}>Thank you{name ? `, ${name.split(' ')[0]}` : ''}.</div>
-          <p className="muted">Your enquiry has reached our team. We usually reply within one business day.</p>
+          <p className="muted">{viaMail ? `Your email app should now open with your enquiry ready to send to ${CONTACT_EMAIL}. If it didn't, please email us directly.` : 'Your enquiry has reached our team. We usually reply within one business day.'}</p>
           <button className="btn btn-primary" style={{ alignSelf: 'flex-start' }} onClick={() => { setStatus('idle'); setName(''); }}>Send another enquiry</button>
         </div>
       </div>

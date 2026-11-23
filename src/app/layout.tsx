@@ -4,7 +4,7 @@ import Script from 'next/script';
 import Footer from '@/components/Footer';
 import Header from '@/components/Header';
 import { JsonLd, organizationLd, websiteLd } from '@/lib/seo';
-import { site } from '@/lib/site';
+import { ogImage, site } from '@/lib/site';
 import './globals.css';
 
 // Self-hosted fonts (SIL Open Font License) — no runtime request to Google, better privacy and speed.
@@ -22,9 +22,9 @@ export const metadata: Metadata = {
   creator: site.name,
   publisher: site.name,
   category: 'technology',
-  alternates: { canonical: site.url },
-  openGraph: { type: 'website', locale: 'en_IN', url: site.url, siteName: site.name, title: `${site.name} — AI Trading Software`, description: site.description },
-  twitter: { card: 'summary_large_image', title: `${site.name} — AI Trading Software`, description: site.description },
+  alternates: { canonical: `${site.url}/` },
+  openGraph: { type: 'website', locale: 'en_IN', url: site.url, siteName: site.name, title: `${site.name} — AI Trading Software`, description: site.description, images: [ogImage] },
+  twitter: { card: 'summary_large_image', title: `${site.name} — AI Trading Software`, description: site.description, images: [ogImage.url] },
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 } },
   verification: { google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || undefined },
   formatDetection: { telephone: false }

@@ -1,5 +1,7 @@
+export const dynamic = 'force-static';
+
 import type { MetadataRoute } from 'next';
-import { site } from '@/lib/site';
+import { absUrl } from '@/lib/site';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
@@ -8,5 +10,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ['/products/forex-ai', 0.9, 'monthly'], ['/services', 0.8, 'monthly'], ['/integrations', 0.8, 'monthly'], ['/about', 0.6, 'yearly'],
     ['/contact', 0.7, 'yearly'], ['/privacy-policy', 0.2, 'yearly'], ['/terms', 0.2, 'yearly'], ['/disclaimer', 0.2, 'yearly']
   ];
-  return routes.map(([p, priority, changeFrequency]) => ({ url: `${site.url}${p}`, lastModified: now, changeFrequency, priority }));
+  return routes.map(([p, priority, changeFrequency]) => ({ url: absUrl(p), lastModified: now, changeFrequency, priority }));
 }
