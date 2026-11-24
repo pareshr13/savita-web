@@ -23,8 +23,10 @@ jobs:
       STATIC_EXPORT: 'true'
       NEXT_PUBLIC_STATIC_SITE: 'true'
       NEXT_PUBLIC_SITE_URL: https://tradingaisoftware.com
+      # Web3Forms access key: public by design (it can only deliver to the inbox
+      # registered at web3forms.com). A WEB3FORMS_KEY repository variable overrides it.
+      NEXT_PUBLIC_WEB3FORMS_KEY: ${{ vars.WEB3FORMS_KEY || '0debb5c8-6b3f-47b8-9242-cfbf81dc1cdc' }}
       # Optional, set under Settings → Secrets and variables → Actions → Variables:
-      NEXT_PUBLIC_WEB3FORMS_KEY: ${{ vars.WEB3FORMS_KEY }}
       NEXT_PUBLIC_FORM_ENDPOINT: ${{ vars.FORM_ENDPOINT }}
       NEXT_PUBLIC_GA_ID: ${{ vars.GA_ID }}
       NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION: ${{ vars.GOOGLE_SITE_VERIFICATION }}
