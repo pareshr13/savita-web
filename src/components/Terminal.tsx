@@ -35,7 +35,7 @@ export default function Terminal() {
   );
 
   return (
-    <Window title="Savita Terminal — AI trading workspace" note="" right={tabs}>
+    <Window title="TAS Terminal — AI trading workspace" note="" right={tabs}>
       <div className="term-grid">
         <div className="pane watchlist" style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
           <div className="lbl" style={{ paddingBottom: 6 }}>Watchlist</div>

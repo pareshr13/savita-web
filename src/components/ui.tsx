@@ -1,11 +1,13 @@
 import type { ReactNode } from 'react';
 
+/** Trading AI Software "TAS" mark — same artwork as the business card (lettering converted to paths). */
 export function Logo({ size = 38 }: { size?: number }) {
   return (
-    <svg width={size} height={size} viewBox="0 0 38 38" aria-hidden="true">
-      <rect width="38" height="38" rx="10" fill="#0A1020" />
-      <path d="M9 25.5l6-6.5 4.5 4 9.5-10" stroke="#7C9BFF" strokeWidth="3" fill="none" strokeLinecap="round" strokeLinejoin="round" />
-      <circle cx="29" cy="13" r="2.8" fill="#FFFFFF" />
+    <svg width={size} height={size} viewBox="0 0 40 40" aria-hidden="true">
+      <rect width="40" height="40" rx="10" fill="#0A1020" />
+      <path d="M10.06 21.5V13.26H7.51V11.44H14.66V13.26H12.15V21.5ZM14.56 21.5 17.96 11.44H20.74L24.15 21.5H21.86L21.19 19.44H17.50L16.83 21.5ZM18.08 17.62H20.61L19.07 12.87H19.64ZM28.44 21.66Q27.50 21.66 26.67 21.31Q25.84 20.97 25.24 20.33Q24.64 19.70 24.34 18.84L26.05 18.07Q26.43 18.89 27.10 19.36Q27.77 19.83 28.58 19.83Q29.01 19.83 29.32 19.70Q29.63 19.56 29.81 19.33Q29.98 19.09 29.98 18.77Q29.98 18.42 29.77 18.17Q29.55 17.92 29.09 17.77L27.12 17.12Q25.92 16.73 25.31 16.01Q24.70 15.29 24.70 14.27Q24.70 13.38 25.14 12.71Q25.58 12.03 26.37 11.65Q27.16 11.28 28.19 11.28Q29.09 11.28 29.86 11.59Q30.63 11.90 31.19 12.46Q31.75 13.03 32.04 13.83L30.33 14.60Q30.05 13.89 29.48 13.50Q28.92 13.10 28.19 13.10Q27.77 13.10 27.45 13.23Q27.12 13.37 26.95 13.62Q26.77 13.87 26.77 14.19Q26.77 14.54 27.00 14.81Q27.23 15.07 27.69 15.22L29.62 15.84Q30.83 16.23 31.43 16.93Q32.04 17.63 32.04 18.65Q32.04 19.52 31.58 20.21Q31.12 20.89 30.31 21.27Q29.51 21.66 28.44 21.66Z" fill="#FFFFFF" />
+      <path d="M8 32 L15 28.5 L21 30.5 L30 25" stroke="#7C9BFF" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+      <circle cx="30.5" cy="24.8" r="2.3" fill="#2350FF" stroke="#FFFFFF" strokeWidth="1" />
     </svg>
   );
 }

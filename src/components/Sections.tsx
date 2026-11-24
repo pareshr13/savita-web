@@ -20,7 +20,7 @@ export function Hero() {
       <div className="wrap hero-copy">
         <Link href="/products/trading-yantra" className="announce"><span>New</span>Introducing Trading Yantra, our AI research platform for NSE</Link>
         <h1 className="h1">{site.tagline}</h1>
-        <p className="lead">Savita IT Solutions builds AI-powered trading terminals, signal engines, analytics portals and broker integrations for stock, crypto and currency markets — designed by traders, engineered by solution architects.</p>
+        <p className="lead">Trading AI Software builds AI-powered trading terminals, signal engines, analytics portals and broker integrations for stock, crypto and currency markets — designed by traders, engineered by solution architects.</p>
         <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap', justifyContent: 'center' }}>
           <Link href="/contact" className="btn btn-primary">Start your project</Link>
           <Link href="#screens" className="btn btn-light">Explore product screens</Link>

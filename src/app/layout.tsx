@@ -14,7 +14,7 @@ const mono = localFont({ src: '../fonts/jetbrains-mono-latin-500.woff2', weight:
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
-  title: { default: `${site.name} — AI Trading Software for Stocks, Crypto & Forex`, template: `%s | ${site.name}` },
+  title: { default: `${site.name} — AI Trading Platforms & Custom Software Development`, template: `%s | ${site.name}` },
   description: site.description,
   applicationName: site.name,
   keywords: site.keywords,
@@ -23,8 +23,8 @@ export const metadata: Metadata = {
   publisher: site.name,
   category: 'technology',
   alternates: { canonical: `${site.url}/` },
-  openGraph: { type: 'website', locale: 'en_IN', url: site.url, siteName: site.name, title: `${site.name} — AI Trading Software`, description: site.description, images: [ogImage] },
-  twitter: { card: 'summary_large_image', title: `${site.name} — AI Trading Software`, description: site.description, images: [ogImage.url] },
+  openGraph: { type: 'website', locale: 'en_IN', url: site.url, siteName: site.name, title: `${site.name} — AI Trading Platforms & Custom Software`, description: site.description, images: [ogImage] },
+  twitter: { card: 'summary_large_image', title: `${site.name} — AI Trading Platforms & Custom Software`, description: site.description, images: [ogImage.url] },
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 } },
   verification: { google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || undefined },
   formatDetection: { telephone: false }

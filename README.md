@@ -1,6 +1,6 @@
-# Savita IT Solutions — Website
+# Trading AI Software — Website
 
-Production website for **Savita IT Solutions**, an AI-first technology company building trading software for stock, crypto and currency markets.
+Production website for **Trading AI Software** (tradingaisoftware.com), an AI-first custom software development company building trading software for stock, crypto and currency markets.
 
 Built with **React 19 + Next.js 16 (App Router) + TypeScript**. Every page is pre-rendered to static HTML for fast loading and full search-engine visibility. The only server code is the lead-collection API.
 

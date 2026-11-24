@@ -12,7 +12,7 @@ export const metadata = pageMeta({
 export default function TechnologyPage() {
   return (
     <>
-      <PageHero crumbs={[{ href: '/', label: 'Home' }, { label: 'Technology' }]} eyebrow="Technology" title="The engineering behind institutional-grade trading software." lead="Options intelligence, trustworthy AI, an institutional risk engine and evidence-first research — the four pillars every Savita platform is built on." />
+      <PageHero crumbs={[{ href: '/', label: 'Home' }, { label: 'Technology' }]} eyebrow="Technology" title="The engineering behind institutional-grade trading software." lead="Options intelligence, trustworthy AI, an institutional risk engine and evidence-first research — the four pillars every platform we build stands on." />
       <Signature />
       <CtaBanner />
       <JsonLd data={breadcrumbLd([{ name: 'Home', path: '/' }, { name: 'Technology', path: '/technology' }])} />

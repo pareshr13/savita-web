@@ -240,9 +240,9 @@ export const plans = [
 ];
 
 export const faqs = [
-  { q: 'What does Savita IT Solutions build?', a: 'AI-powered trading software for stock, crypto and currency markets: signal engines, trading terminals and portals, option-chain analytics, backtesting platforms, risk systems and broker or exchange integrations.' },
+  { q: 'What does Trading AI Software build?', a: 'AI-powered trading software for stock, crypto and currency markets: signal engines, trading terminals and portals, option-chain analytics, backtesting platforms, risk systems and broker or exchange integrations.' },
   { q: 'Which brokers and exchanges can you integrate with?', a: 'We build against official APIs including Zerodha Kite Connect, Fyers, Upstox, Angel One SmartAPI, ICICI Direct Breeze, Dhan, Groww, Alpaca, Interactive Brokers, Binance, Coinbase, OANDA and MetaTrader 5, among others.' },
-  { q: 'Do you provide investment advice or trading tips?', a: 'No. Savita IT Solutions is a technology company. We build software for market participants and do not provide investment advice, research recommendations or portfolio management.' },
+  { q: 'Do you provide investment advice or trading tips?', a: 'No. Trading AI Software is a technology company. We build software for market participants and do not provide investment advice, research recommendations or portfolio management.' },
   { q: 'Can you deliver under our brand?', a: 'Yes. Our white-label model delivers our proven modules — terminal, screeners, option analytics and integrations — on your branding and domain.' },
   { q: 'Who owns the code?', a: 'For custom builds, the source code is handed over to you at the end of the engagement.' },
   { q: 'How do you validate trading strategies?', a: 'With walk-forward backtests, purged train/test boundaries, out-of-sample confirmation periods, realistic Indian costs and slippage, and comparisons against random-entry baselines.' }

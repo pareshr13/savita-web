@@ -3,7 +3,7 @@ import { breadcrumbLd, faqLd, JsonLd, pageMeta } from '@/lib/seo';
 
 export const metadata = pageMeta({
   title: 'Contact Us — Start Your Trading Software Project',
-  description: 'Talk to Savita IT Solutions about AI trading software, broker integrations, option analytics or a white-label platform. We reply within one business day.',
+  description: 'Talk to Trading AI Software about AI trading software, broker integrations, option analytics or a white-label platform. We reply within one business day.',
   path: '/contact'
 });
 

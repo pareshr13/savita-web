@@ -17,7 +17,7 @@ export default function Header() {
       <nav aria-label="Main" className="wrap">
         <Link href="/" className="brand" aria-label={`${site.name} — home`}>
           <Logo />
-          <span className="brand-name"><b>Savita</b><small>IT Solutions</small></span>
+          <span className="brand-name"><b>Trading AI Software</b><small>Custom Software Development</small></span>
         </Link>
         <div className="nav-links">
           {nav.map((n) => (

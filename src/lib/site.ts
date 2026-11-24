@@ -3,12 +3,12 @@
  * Update these values (or the matching NEXT_PUBLIC_* environment variables) before going live.
  */
 export const site = {
-  name: 'Savita IT Solutions',
-  shortName: 'Savita IT',
+  name: 'Trading AI Software',
+  shortName: 'TAS',
   url: (process.env.NEXT_PUBLIC_SITE_URL || 'https://tradingaisoftware.com').replace(/\/$/, ''),
   tagline: 'Institutional-grade AI trading technology, engineered in India.',
   description:
-    'Savita IT Solutions builds AI-powered trading terminals, signal engines, option-chain analytics, backtesting platforms and broker integrations for stock, crypto and currency markets.',
+    'Trading AI Software is a custom software development company building AI-powered trading terminals, signal engines, option-chain analytics, backtesting platforms and broker integrations for stock, crypto and currency markets.',
   email: process.env.NEXT_PUBLIC_CONTACT_EMAIL || 'info@tradingaisoftware.com',
   phone: process.env.NEXT_PUBLIC_CONTACT_PHONE || '+91 84607 71378',
   whatsapp: process.env.NEXT_PUBLIC_WHATSAPP || '918460771378',
@@ -36,7 +36,10 @@ export const site = {
     'crypto trading platform development',
     'forex trading platform development',
     'backtesting platform',
-    'fintech software company India'
+    'fintech software company India',
+    'custom software development company India',
+    'software development company Gandhinagar',
+    'Trading AI Software'
   ]
 };
 

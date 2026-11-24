@@ -77,8 +77,8 @@ async function sendEmail(lead: Lead, record: Record<string, unknown>) {
     await transport.sendMail({
       from,
       to: lead.email,
-      subject: 'We received your enquiry — Savita IT Solutions',
-      text: `Hi ${lead.name},\n\nThank you for contacting Savita IT Solutions. Our team has received your enquiry and will reply within one business day.\n\nRegards,\nSavita IT Solutions`
+      subject: 'We received your enquiry — Trading AI Software',
+      text: `Hi ${lead.name},\n\nThank you for contacting Trading AI Software. Our team has received your enquiry and will reply within one business day.\n\nRegards,\nTrading AI Software`
     });
   }
   return true;

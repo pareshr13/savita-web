@@ -1,8 +1,8 @@
 {
-  "name": "savita-it-solutions-web",
+  "name": "trading-ai-software-web",
   "version": "1.0.0",
   "private": true,
-  "description": "Savita IT Solutions — AI-first technology for stock, crypto and currency markets. Corporate website.",
+  "description": "Trading AI Software — AI-first technology for stock, crypto and currency markets. Corporate website.",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
